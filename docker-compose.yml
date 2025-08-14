@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  backend-web:
+    build: ./docker/
+    container_name: django_invera
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend/:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DJANGO_DEBUG=1
