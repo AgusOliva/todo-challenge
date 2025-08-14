@@ -7,6 +7,15 @@ docker compose up
 # Creamos un usuario de ejemplo para hacer las pruebas
 docker compose exec backend-web python manage.py createsuperuser
 
+# Makemigrations
+docker compose exec backend-web python manage.py makemigrations
+
+# Migrate
+docker compose exec backend-web python manage.py migrate
+
+# Correr tests
+docker compose exec backend-web pytest -v
+
 # Guarda la respuesta (access y refresh) para usarlos en los siguientes requests
 curl -X POST http://localhost:8000/api/token/ \
   -H "Content-Type: application/json" \
